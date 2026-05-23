@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spotify UI Clone</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#121212;
+      color:white;
+      overflow:hidden;
+    }
+
+    .container{
+      display:flex;
+      height:100vh;
+    }
+
+    /* Sidebar */
+
+    .sidebar{
+      width:250px;
+      background:#000;
+      padding:25px 20px;
+      position:fixed;
+      height:100%;
+      left:0;
+      top:0;
+    }
+
+    .logo{
+      color:#1db954;
+      font-size:32px;
+      font-weight:bold;
+      margin-bottom:40px;
+    }
+
+    .menu{
+      list-style:none;
+    }
+
+    .menu li{
+      padding:14px 0;
+      font-size:18px;
+      cursor:pointer;
+      color:#b3b3b3;
+      transition:0.3s;
+    }
+
+    .menu li:hover{
+      color:white;
+    }
+
+    /* Main Section */
+
+    .main{
+      margin-left:250px;
+      width:calc(100% - 250px);
+      height:100vh;
+      overflow-y:auto;
+      padding:30px;
+      padding-bottom:120px;
+      background:linear-gradient(#1d1d1d,#121212);
+    }
+
+    /* Scrollbar */
+
+    .main::-webkit-scrollbar{
+      width:10px;
+    }
+
+    .main::-webkit-scrollbar-thumb{
+      background:#444;
+      border-radius:10px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:40px;
+    }
+
+    .search input{
+      width:350px;
+      padding:12px 20px;
+      border:none;
+      outline:none;
+      border-radius:30px;
+      background:white;
+      font-size:15px;
+    }
+
+    .profile{
+      background:#1db954;
+      padding:10px 22px;
+      border-radius:25px;
+      font-weight:bold;
+    }
+
+    .section{
+      margin-bottom:50px;
+    }
+
+    .section h2{
+      margin-bottom:20px;
+      font-size:28px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:22px;
+    }
+
+    .card{
+      background:#181818;
+      padding:15px;
+      border-radius:15px;
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    .card:hover{
+      background:#282828;
+      transform:translateY(-5px);
+    }
+
+    .card img{
+      width:100%;
+      border-radius:12px;
+      margin-bottom:12px;
+    }
+
+    .card h3{
+      margin-bottom:8px;
+      font-size:18px;
+    }
+
+    .card p{
+      color:#b3b3b3;
+      font-size:14px;
+      line-height:1.4;
+    }
+
+    /* Music Player */
+
+    .player{
+      position:fixed;
+      bottom:0;
+      left:0;
+      width:100%;
+      height:85px;
+      background:#181818;
+      border-top:1px solid #333;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 25px;
+    }
+
+    .song-info{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+
+    .song-info img{
+      width:60px;
+      height:60px;
+      border-radius:8px;
+    }
+
+    .song-info p{
+      color:#b3b3b3;
+      font-size:14px;
+    }
+
+    .controls button{
+      background:none;
+      border:none;
+      color:white;
+      font-size:22px;
+      margin:0 12px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .controls button:hover{
+      color:#1db954;
+    }
+
+    .volume{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .volume input{
+      width:100px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+      <div class="logo">Spotify</div>
+
+      <ul class="menu">
+        <li>🏠 Home</li>
+        <li>🔍 Search</li>
+        <li>📚 Your Library</li>
+        <li>❤️ Liked Songs</li>
+        <li>🎵 Playlists</li>
+        <li>🎧 Podcasts</li>
+        <li>🔥 Trending</li>
+      </ul>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="main">
+
+      <div class="topbar">
+
+        <div class="search">
+          <input type="text" placeholder="Search songs, albums, artists...">
+        </div>
+
+        <div class="profile">
+          Tanmay
+        </div>
+
+      </div>
+
+      <!-- Section 1 -->
+
+      <div class="section">
+
+        <h2>Trending Albums</h2>
+
+        <div class="cards">
+
+          <div class="card">
+            <img src="https://picsum.photos/300?1">
+            <h3>Night Vibes</h3>
+            <p>Relaxing chill beats for late nights.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?2">
+            <h3>Top Hits</h3>
+            <p>Most streamed songs worldwide.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?3">
+            <h3>Workout Mix</h3>
+            <p>Energy boosting tracks for gym.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?4">
+            <h3>LoFi Beats</h3>
+            <p>Focus music for study sessions.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?5">
+            <h3>Party Mode</h3>
+            <p>Dance and party non-stop.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Section 2 -->
+
+      <div class="section">
+
+        <h2>Made For You</h2>
+
+        <div class="cards">
+
+          <div class="card">
+            <img src="https://picsum.photos/300?6">
+            <h3>Daily Mix 1</h3>
+            <p>Your favorite pop tracks.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?7">
+            <h3>Daily Mix 2</h3>
+            <p>Hip-hop and rap collection.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?8">
+            <h3>Daily Mix 3</h3>
+            <p>Soft relaxing instrumental music.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?9">
+            <h3>Discover Weekly</h3>
+            <p>Fresh recommendations every week.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?10">
+            <h3>Release Radar</h3>
+            <p>Latest songs from your artists.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Section 3 -->
+
+      <div class="section">
+
+        <h2>Popular Artists</h2>
+
+        <div class="cards">
+
+          <div class="card">
+            <img src="https://picsum.photos/300?11">
+            <h3>Arijit Singh</h3>
+            <p>Top Bollywood romantic songs.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?12">
+            <h3>Ed Sheeran</h3>
+            <p>Global chart-topping artist.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?13">
+            <h3>Weeknd</h3>
+            <p>Dark pop and synthwave vibes.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?14">
+            <h3>Dua Lipa</h3>
+            <p>Dance pop sensation.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?15">
+            <h3>Drake</h3>
+            <p>Popular rap and hip-hop hits.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Section 4 -->
+
+      <div class="section">
+
+        <h2>Recently Played</h2>
+
+        <div class="cards">
+
+          <div class="card">
+            <img src="https://picsum.photos/300?16">
+            <h3>Calm Piano</h3>
+            <p>Instrumental calm music.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?17">
+            <h3>Road Trip</h3>
+            <p>Travel songs collection.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?18">
+            <h3>Indie India</h3>
+            <p>Independent Indian artists.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?19">
+            <h3>Morning Jazz</h3>
+            <p>Smooth jazz for mornings.</p>
+          </div>
+
+          <div class="card">
+            <img src="https://picsum.photos/300?20">
+            <h3>Acoustic Hits</h3>
+            <p>Soft acoustic melodies.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Music Player -->
+
+  <div class="player">
+
+    <div class="song-info">
+
+      <img src="https://picsum.photos/100">
+
+      <div>
+        <h4>Perfect</h4>
+        <p>Ed Sheeran</p>
+      </div>
+
+    </div>
+
+    <div class="controls">
+      <button>⏮</button>
+      <button>▶</button>
+      <button>⏭</button>
+    </div>
+
+    <div class="volume">
+      🔊
+      <input type="range">
+    </div>
+
+  </div>
+
+</body>
+</html>
